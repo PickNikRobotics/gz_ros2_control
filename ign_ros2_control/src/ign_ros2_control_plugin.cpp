@@ -383,7 +383,7 @@ void IgnitionROS2ControlPlugin::Configure(
     std::make_unique<hardware_interface::ResourceManager>();
 
   try {
-    resource_manager_->load_urdf(urdf_string, false, false);
+    resource_manager_->load_urdf(urdf_string, false);
   } catch (...) {
     RCLCPP_ERROR(
       this->dataPtr->node_->get_logger(), "Error initializing URDF to resource manager!");
