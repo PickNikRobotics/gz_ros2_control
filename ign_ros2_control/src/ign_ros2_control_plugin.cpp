@@ -383,7 +383,7 @@ void IgnitionROS2ControlPlugin::Configure(
     std::make_unique<hardware_interface::ResourceManager>();
 
   try {
-    resource_manager_->load_urdf(urdf_string, false, false);
+    resource_manager_->load_urdf(urdf_string, false);
   } catch (...) {
     RCLCPP_ERROR(
       this->dataPtr->node_->get_logger(), "Error initializing URDF to resource manager!");
@@ -463,7 +463,7 @@ void IgnitionROS2ControlPlugin::Configure(
     std::chrono::duration_cast<std::chrono::nanoseconds>(
       std::chrono::duration<double>(1.0 / static_cast<double>(this->dataPtr->update_rate))));
 
-  // Force setting of use_sime_time parameter
+  // Force setting of use_sim_time parameter
   this->dataPtr->controller_manager_->set_parameter(
     rclcpp::Parameter("use_sim_time", rclcpp::ParameterValue(true)));
 
